@@ -5,6 +5,7 @@ import socket
 import shutil
 import traceback
 from urllib.request import urlopen
+import sys
 
 HOST_PREFIX = "tb210"
 TMP_NODE_CMD0 = "./subspace-node  --chain  gemini-2a --base-path ../chain --execution wasm  --state-pruning archive --validator --name  <NAME_ID>"
@@ -24,6 +25,7 @@ FARMER_FILE = "https://github.com/subspace/subspace/releases/download/gemini-2a-
 
 FARMER_RUN_FILE = "subspace-farmer"
 NODE_RUN_FILE = "subspace-node"
+
 
 def get_home():
     return os.path.expanduser('~')
@@ -60,8 +62,6 @@ def download_file(url):
         with open(shorter_filename, 'wb') as download:
             download.write(content)
         change_permission_file(shorter_filename)
-
-
 
 
 def create_node_farmer_script(reward_address="dummy"):
@@ -119,7 +119,8 @@ def change_permission_file(path):
     except:
         pass
 
-def change_owner(path,owner="tung"):
+
+def change_owner(path, owner="tung"):
     try:
         # print("Change file permission " + str(path))
         if os.path.exists(path):
@@ -132,6 +133,8 @@ def change_owner(path,owner="tung"):
             print(path + " not existed!")
     except:
         pass
+
+
 def copy_file(src, destination):
     try:
         print("copy " + src + " to " + destination)
@@ -188,21 +191,28 @@ def create_scripts_at_location(reward_addrs, arr_location=["/home/tung", "/mnt/n
             node_script_file, farmer_script_file = create_node_farmer_script(reward_address=reward_address)
             copy_file(node_script_file, subsub_path_node)
             if os.path.exists(NODE_RUN_FILE):
-                copy_file(NODE_RUN_FILE,subsub_path_node)
+                copy_file(NODE_RUN_FILE, subsub_path_node)
 
             copy_file(farmer_script_file, subsub_path_farmer)
             if os.path.exists(FARMER_RUN_FILE):
-                copy_file(FARMER_RUN_FILE,subsub_path_farmer)
+                copy_file(FARMER_RUN_FILE, subsub_path_farmer)
             counter = counter + 1
 
 
-
-def main():
-    #print(get_home())
+def main(arg):
+    # print(get_home())
     download_file(NODE_FILE)
     download_file(FARMER_FILE)
     reward_address = get_arr_addrs()
-    create_scripts_at_location(reward_addrs=reward_address)
+    if arg == 1:
+        create_scripts_at_location(reward_addrs=reward_address)
+    elif arg == 2:
+        location = sys.argv[1]
+        create_scripts_at_location(reward_address=reward_address,
+                                   arr_location=["/home/tung", "/mnt/nvme1", "/mnt/nvme2"],
+                                   arr_number_folder=[5, 6, 6])
+
 
 if __name__ == '__main__':
-    main()
+    n = len(sys.argv)
+    main(n)
