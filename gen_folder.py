@@ -208,7 +208,7 @@ def main(arg):
         create_scripts_at_location(reward_addrs=reward_address)
     elif arg == 2:
         location = sys.argv[1]
-        create_scripts_at_location(reward_address=reward_address,
+        create_scripts_at_location(reward_addrs=reward_address,
                                    arr_location=["/home/tung", "/mnt/nvme1", "/mnt/nvme2"],
                                    arr_number_folder=[5, 6, 6])
 
