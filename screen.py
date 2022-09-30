@@ -88,6 +88,24 @@ def main():
             time.sleep(6)
             start_nodes_farmers(script_file=FARMER_SCRIPT, from_path=path,
                                 from_subfolder_from_to=[1, number])
+    elif n == 4:
+            location = sys.argv[1]
+            number1 = (int)(sys.argv[2])
+            number2 = (int)(sys.argv[3])
+            if str(location) == "home":
+                start_nodes_farmers(script_file=NODE_SCRIPT, from_path="/home/tung/subspace",
+                                    from_subfolder_from_to=[number1, number2])
+                time.sleep(6)
+                start_nodes_farmers(script_file=FARMER_SCRIPT, from_path="/home/tung/subspace",
+                                    from_subfolder_from_to=[number1, number2])
+            else:
+                path = "/mnt/" + location + "/subspace"
+                start_nodes_farmers(script_file=NODE_SCRIPT, from_path=path,
+                                    from_subfolder_from_to=[number1, number2])
+                time.sleep(6)
+                start_nodes_farmers(script_file=FARMER_SCRIPT, from_path=path,
+                                    from_subfolder_from_to=[number1, number2])
+
 
 
 # start_nodes(from_path="/home/tung/subspace")
