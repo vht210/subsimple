@@ -53,23 +53,24 @@ def start_script(exec_path, script_name, screen_name):
 
 
 def main():
+    SLEEP_TIME=10
     n = len(sys.argv)
     if n == 1:
         start_nodes_farmers(script_file=NODE_SCRIPT, from_path="/mnt/nvme1/subspace", from_subfolder_from_to=[1, 6])
-        time.sleep(6)
+        time.sleep(10)
         start_nodes_farmers(script_file=FARMER_SCRIPT, from_path="/mnt/nvme1/subspace", from_subfolder_from_to=[1, 6])
     elif n == 2:
         location = sys.argv[1]
         if str(location) == "home":
             start_nodes_farmers(script_file=NODE_SCRIPT, from_path="/home/tung/subspace", from_subfolder_from_to=[1, 5])
-            time.sleep(6)
+            time.sleep(10)
             start_nodes_farmers(script_file=FARMER_SCRIPT, from_path="/home/tung/subspace",
                                 from_subfolder_from_to=[1, 5])
         else:
             path = "/mnt/" + location + "/subspace"
             start_nodes_farmers(script_file=NODE_SCRIPT, from_path=path,
                                 from_subfolder_from_to=[1, 6])
-            time.sleep(6)
+            time.sleep(10)
             start_nodes_farmers(script_file=FARMER_SCRIPT, from_path=path,
                                 from_subfolder_from_to=[1, 6])
     elif n == 3:
@@ -78,33 +79,53 @@ def main():
         if str(location) == "home":
             start_nodes_farmers(script_file=NODE_SCRIPT, from_path="/home/tung/subspace",
                                 from_subfolder_from_to=[1, number])
-            time.sleep(6)
+            time.sleep(SLEEP_TIME)
             start_nodes_farmers(script_file=FARMER_SCRIPT, from_path="/home/tung/subspace",
                                 from_subfolder_from_to=[1, number])
         else:
             path = "/mnt/" + location + "/subspace"
             start_nodes_farmers(script_file=NODE_SCRIPT, from_path=path,
                                 from_subfolder_from_to=[1, number])
-            time.sleep(6)
+            time.sleep(SLEEP_TIME)
             start_nodes_farmers(script_file=FARMER_SCRIPT, from_path=path,
                                 from_subfolder_from_to=[1, number])
     elif n == 4:
-            location = sys.argv[1]
-            number1 = (int)(sys.argv[2])
-            number2 = (int)(sys.argv[3])
-            if str(location) == "home":
+        location = sys.argv[1]
+        number1 = (int)(sys.argv[2])
+        number2 = (int)(sys.argv[3])
+        if str(location) == "home":
+            start_nodes_farmers(script_file=NODE_SCRIPT, from_path="/home/tung/subspace",
+                                from_subfolder_from_to=[number1, number2])
+            time.sleep(SLEEP_TIME)
+            start_nodes_farmers(script_file=FARMER_SCRIPT, from_path="/home/tung/subspace",
+                                from_subfolder_from_to=[number1, number2])
+        else:
+            path = "/mnt/" + location + "/subspace"
+            start_nodes_farmers(script_file=NODE_SCRIPT, from_path=path,
+                                from_subfolder_from_to=[number1, number2])
+            time.sleep(SLEEP_TIME)
+            start_nodes_farmers(script_file=FARMER_SCRIPT, from_path=path,
+                                from_subfolder_from_to=[number1, number2])
+    elif n == 5:
+        location = sys.argv[1]
+        number1 = (int)(sys.argv[2])
+        number2 = (int)(sys.argv[3])
+        farmer_or_node = str(sys.argv[4]).strip().lower()
+        if str(location) == "home":
+            if farmer_or_node == "node":
                 start_nodes_farmers(script_file=NODE_SCRIPT, from_path="/home/tung/subspace",
-                                    from_subfolder_from_to=[number1, number2])
-                time.sleep(6)
-                start_nodes_farmers(script_file=FARMER_SCRIPT, from_path="/home/tung/subspace",
-                                    from_subfolder_from_to=[number1, number2])
+                                from_subfolder_from_to=[number1, number2])
             else:
-                path = "/mnt/" + location + "/subspace"
+                start_nodes_farmers(script_file=FARMER_SCRIPT, from_path="/home/tung/subspace",
+                                from_subfolder_from_to=[number1, number2])
+        else:
+            path = "/mnt/" + location + "/subspace"
+            if farmer_or_node == "node":
                 start_nodes_farmers(script_file=NODE_SCRIPT, from_path=path,
-                                    from_subfolder_from_to=[number1, number2])
-                time.sleep(6)
+                                from_subfolder_from_to=[number1, number2])
+            else:
                 start_nodes_farmers(script_file=FARMER_SCRIPT, from_path=path,
-                                    from_subfolder_from_to=[number1, number2])
+                                from_subfolder_from_to=[number1, number2])
 
 
 

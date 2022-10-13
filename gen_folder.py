@@ -161,7 +161,7 @@ def create_folder(path):
         pass
 
 
-def create_scripts_at_location(reward_addrs, arr_location=["/home/tung", "/mnt/nvme1"], arr_number_folder=[5, 6]):
+def create_scripts_at_location(reward_addrs, arr_location=["/home/tung", "/mnt/nvme1"], arr_number_folder=[5, 5]):
     counter = 0
     for location, val_number in zip(arr_location, arr_number_folder):
         if counter > len(reward_addrs):
@@ -210,7 +210,7 @@ def main(arg):
         location = sys.argv[1]
         create_scripts_at_location(reward_addrs=reward_address,
                                    arr_location=["/home/tung", "/mnt/nvme1", "/mnt/nvme2"],
-                                   arr_number_folder=[5, 6, 6])
+                                   arr_number_folder=[5, 5, 5])
 
 
 if __name__ == '__main__':
