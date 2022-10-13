@@ -56,9 +56,9 @@ def main():
     SLEEP_TIME=10
     n = len(sys.argv)
     if n == 1:
-        start_nodes_farmers(script_file=NODE_SCRIPT, from_path="/mnt/nvme1/subspace", from_subfolder_from_to=[1, 6])
+        start_nodes_farmers(script_file=NODE_SCRIPT, from_path="/mnt/nvme1/subspace", from_subfolder_from_to=[1, 5])
         time.sleep(10)
-        start_nodes_farmers(script_file=FARMER_SCRIPT, from_path="/mnt/nvme1/subspace", from_subfolder_from_to=[1, 6])
+        start_nodes_farmers(script_file=FARMER_SCRIPT, from_path="/mnt/nvme1/subspace", from_subfolder_from_to=[1, 5])
     elif n == 2:
         location = sys.argv[1]
         if str(location) == "home":
@@ -69,10 +69,10 @@ def main():
         else:
             path = "/mnt/" + location + "/subspace"
             start_nodes_farmers(script_file=NODE_SCRIPT, from_path=path,
-                                from_subfolder_from_to=[1, 6])
+                                from_subfolder_from_to=[1, 5])
             time.sleep(10)
             start_nodes_farmers(script_file=FARMER_SCRIPT, from_path=path,
-                                from_subfolder_from_to=[1, 6])
+                                from_subfolder_from_to=[1, 5])
     elif n == 3:
         location = sys.argv[1]
         number = (int)(sys.argv[2])
