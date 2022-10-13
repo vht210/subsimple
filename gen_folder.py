@@ -20,8 +20,10 @@ PORT_START = 30334
 FIRST_NODE = True
 
 GITHUB_LOC = "https://github.com/subspace/subspace/releases"
-NODE_FILE = "https://github.com/subspace/subspace/releases/download/gemini-2a-2022-sep-10/subspace-node-ubuntu-x86_64-gemini-2a-2022-sep-10"
-FARMER_FILE = "https://github.com/subspace/subspace/releases/download/gemini-2a-2022-sep-10/subspace-farmer-ubuntu-x86_64-gemini-2a-2022-sep-10"
+#NODE_FILE = "https://github.com/subspace/subspace/releases/download/gemini-2a-2022-sep-10/subspace-node-ubuntu-x86_64-gemini-2a-2022-sep-10"
+#FARMER_FILE = "https://github.com/subspace/subspace/releases/download/gemini-2a-2022-sep-10/subspace-farmer-ubuntu-x86_64-gemini-2a-2022-sep-10"
+NODE_FILE = "https://github.com/subspace/subspace/releases/download/gemini-2a-2022-oct-06/subspace-node-ubuntu-x86_64-gemini-2a-2022-oct-06"
+FARMER_FILE = "https://github.com/subspace/subspace/releases/download/gemini-2a-2022-oct-06/subspace-farmer-ubuntu-x86_64-gemini-2a-2022-oct-06"
 
 FARMER_RUN_FILE = "subspace-farmer"
 NODE_RUN_FILE = "subspace-node"
